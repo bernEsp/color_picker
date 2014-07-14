@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
 	s.name				= "color_picker"
-	s.version			= "0.0.1"
+	s.version			= "0.0.2"
 	s.date				= "2014-07-13"
 	s.summary			= "A gem to genenerate a random color"
 	s.description = "a tool to get a color based on color palette, also have a method to export to html all the color palette"
