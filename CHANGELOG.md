@@ -8,3 +8,6 @@
 
 ### VERSION 0.0.3
 * fixed gem dependency
+
+### VERSION 0.0.4
+* add files to gem spec, rake dependecy and version file
