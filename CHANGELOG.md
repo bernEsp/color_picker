@@ -11,3 +11,6 @@
 
 ### VERSION 0.0.4
 * add files to gem spec, rake dependecy and version file
+
+### VERSION 0.0.5
+* fix gem dependencies and add travis to test every build
