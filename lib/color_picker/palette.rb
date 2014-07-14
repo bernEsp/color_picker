@@ -1,6 +1,6 @@
 module ColorPicker
   class Palette
-    attr_reader :range, :range_html
+    attr_reader :range, :range_html, :max_number_of_colors
 		attr_accessor :blue_color_range, :green_color_range, :red_color_range
     def initialize(palette_type="complete_palette")
       @range, @blue_color_range, @green_color_range, @red_color_range = []
@@ -44,11 +44,16 @@ module ColorPicker
 
     private
       def generate_palette
-				%w(red green blue).each do |color|
-					eval "#{color}_color_range= #{color}_color_range.to_s(16)" unless color.is_a?(String)
-				end
-        @range = [@red_color_range,@green_color_range,@blue_color_range]
+				max_colors
+				@range = [@red_color_range,@green_color_range,@blue_color_range]
       end
+
+			def max_colors
+				red = (@red_color_range.end+1 * (16**3)).to_s(16).ljust(6, "0")
+				green = (@green_color_range.end+1 * (16**2)).to_s(16).rjust(4, "0") 
+				blue = (@blue_color_range.end+1 *16).to_s(16)
+				@max_number_of_colors = red.to_i(16) + green.to_i(16) + blue.to_i(16)
+			end
 
       def get_pair
 				(@blue_color_range.begin.to_i(16) ..@blue_color_range.end.to_i(16)).map do |n|

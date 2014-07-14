@@ -16,7 +16,7 @@ module ColorPicker
     def generate
       @code = ""
       @palette.range.each_with_index do |range, index|
-        @code += range.to_a[rand(range.size)].to_s(16)
+        @code += range.to_a[rand(range.size)].to_s(16).rjust(2, '0') 
       end
       @code
     end
