@@ -1,0 +1,5 @@
+require 'rake'
+require 'color_picker'
+require 'minitest'
+require 'minitest/autorun'
+require 'minitest/unit'
