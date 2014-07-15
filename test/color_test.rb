@@ -33,7 +33,6 @@ module ColorPicker
 			colors = []
 			10.times { colors << @color.generate }
 			colors.each do |color|
-				puts color
 				assert_operator color.to_i(16), :<=, (max_range+1)
 			end
 			assert_equal @color.palette.max_number_of_colors, max_range
