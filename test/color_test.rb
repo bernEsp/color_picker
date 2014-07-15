@@ -26,15 +26,11 @@ module ColorPicker
 
 		def test_strong_colors_generate_color
 			@color.palette_type("strong_colors")
-			red = (@color.palette.range[0].end+1 * (16**3)).to_s(16).ljust(6, "0")
-			green = (@color.palette.range[1].end+1 * (16**2)).to_s(16).rjust(4, "0") 
-			blue = (@color.palette.range[2].end+1 *16).to_s(16)
-			max_range = red.to_i(16) + green.to_i(16) + blue.to_i(16)
+			max_range = (@color.palette.red_color_range.end+1) * (@color.palette.green_color_range.end+1) * (@color.palette.blue_color_range.end+1)
 			colors = []
 			10.times { colors << @color.generate }
 			colors.each do |color|
-				puts color
-				assert_operator color.to_i(16), :<=, (max_range+1)
+				assert_match (/[0-7]{2}[0-9]{2}[0-9|a-fA-F]{2}/), color
 			end
 			assert_equal @color.palette.max_number_of_colors, max_range
 		end
