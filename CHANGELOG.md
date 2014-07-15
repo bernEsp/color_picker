@@ -18,3 +18,8 @@
 ### VERSION 0.0.6
 * test that strong colors palette return only code in the range
 * add to palette a method to know the max number of colors in the palette
+
+### VERSION 0.0.7
+* add coveralls gem and require in test suite
+* add custom palette method in order to allow ser you own range
+* rgb ranges only can be read
