@@ -57,11 +57,7 @@ module ColorPicker
     
     private :red_color_range=, :blue_color_range=, :green_color_range=, :template=
 
-    private 
-      def default_options
-        TEMPLATES[:skeleton]
-      end
-    
+    private    
       def opts(options={})
         case options[:template]
         when :strong
