@@ -2,41 +2,32 @@ require "test_helper"
 module ColorPicker
 	class ColorTest < Minitest::Test
 		def setup
-			@color = ColorPicker::Color.new
+			@color = ColorPicker::Color.new("000000")
 		end
 
-		def test_generate
-			assert_match /([0-9]|[a-fA-F]){5,6}/, @color.generate
+		def test_initialize_color
+			assert_equal "000000", @color.hex_code
 		end
 
-		def test_code
-			pre_generate_code = @color.code
-			assert_equal  pre_generate_code, @color.code
+		def test_convert_to_rgb
+			assert_equal [0,0,0], ColorPicker::Color.new([0,0,0]).rgb_code
 		end
 
-		def test_complete_palette
-			@color.palette_type("complete_palette")
-			assert_equal [0..255, 0..255, 0..255], @color.palette.range
+		def test_to_s_hexadecimal
+			assert_equal "#000000", @color.to_s
 		end
 
-		def test_strong_colors_palette
-			@color.palette_type("strong_colors")
-			assert_equal [0..7, 0..9, 0..159], @color.palette.range
+		def test_to_s_rgb
+			assert_equal "rgb(0, 0, 0)", ColorPicker::Color.new([0,0,0]).to_s(:rgb)
 		end
 
-		def test_strong_colors_generate_color
-			@color.palette_type("strong_colors")
-			max_range = (@color.palette.red_color_range.end+1) * (@color.palette.green_color_range.end+1) * (@color.palette.blue_color_range.end+1)
-			colors = []
-			10.times { colors << @color.generate }
-			colors.each do |color|
-				assert_match (/[0-7]{2}[0-9]{2}[0-9|a-fA-F]{2}/), color
-			end
-			assert_equal @color.palette.max_number_of_colors, max_range
+		def test_hex_to_rgb
+			assert_equal [0,0,0], @color.to_rgb 
 		end
 
-		def test_method_missing
-			assert_match "undefined_method", @color.palette_type("undefined_method")
+		def test_rgb_to_hex
+			assert_equal "000000", ColorPicker::Color.new([0,0,0]).to_hex
 		end
+
 	end
 end
