@@ -48,6 +48,8 @@
 * change indentation tabs to spaces 
 ### VERSION 0.1.2
 * depreacate default options in palette
+### VERSION 0.1.3
+* add to s method
 
  
 
