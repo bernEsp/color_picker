@@ -31,15 +31,19 @@ module ColorPicker
 			assert_equal [0..1, 0..1, 0..1], @palette.generate(template: :custom, red_color_range: 0..1, green_color_range: 0..1, blue_color_range: 0..1)
 		end
 
+		def test_sample_color_return_color_instance
+			assert_kind_of Color, @palette.sample_color
+		end
+
 		def test_sample_color
-			assert_match /([0-9]|[a-fA-F]){5,6}/, @palette.sample_color
+			assert_match /([0-9]|[a-fA-F]){5,6}/, @palette.sample_color.to_s
 		end
 
 		def test_strong_colors_palette_range
 			@palette.generate(template: :strong)
 			max_range = (@palette.red_color_range.end+1) * (@palette.green_color_range.end+1) * (@palette.blue_color_range.end+1)
 			colors = []
-			10.times { colors << @palette.sample_color }
+			10.times { colors << @palette.sample_color.to_s }
 			colors.each do |color|
 				assert_match (/[0-7]{2}[0-9]{2}[0-9|a-fA-F]{2}/), color
 			end
@@ -49,5 +53,6 @@ module ColorPicker
 		def test_method_missing
 			assert_match "Colors and stars something wrong. Palette types available :complete and :strong via template option", @palette.undefined
 		end
+
 	end
 end

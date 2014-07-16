@@ -45,9 +45,10 @@ module ColorPicker
 		end
 
 		def sample_color
-			rgb_range.map do |range_color|
+			ary_code = rgb_range.map do |range_color|
 				range_color.to_a.sample.to_s(16).rjust(2, "0")
-			end.join
+			end
+			Color.new(ary_code.join)
 		end
 
     def method_missing(m, *args, &block)
