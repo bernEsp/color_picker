@@ -22,10 +22,9 @@ module ColorPicker
 		end
 
 		def test_to_html
-			skip("need to work in algorith to itereate bigger numbers")
-			@palette.custom_palette(0..1, 0..1, 0..1)
-			assert_match (/<div style='width=600px;height='auto';float='left';clear='both'><div style='background='#010101'; border='1px solid #000'> <\/div>
-										 <div style='float=left'>010101<\/div><\/div>/), @palette.to_html 
+			@palette.generate(template: :html)
+			assert_match /DOCTYPE HTML/, @palette.html
+			#assert_match /<div style='width:600px;height:auto;float:left;clear:both'><div style='background:#000000;width:60px;height:60px;border:1px solid #000'>&nbsp;<\/div><div style='float:left'>000000<\/div><\/div>/, @palette.to_html 
 		end
 
 		def test_generate_custom_palette
@@ -37,7 +36,7 @@ module ColorPicker
 		end
 
 		def test_strong_colors_palette_range
-			@palette.generate(type: :strong)
+			@palette.generate(template: :strong)
 			max_range = (@palette.red_color_range.end+1) * (@palette.green_color_range.end+1) * (@palette.blue_color_range.end+1)
 			colors = []
 			10.times { colors << @palette.sample_color }

@@ -21,13 +21,16 @@ module ColorPicker
 			@rgb_range = [red_color_range,green_color_range,blue_color_range]
 		end
     
-		def to_html
-      html = "<div style='width='600px'; height='auto'; float='left'; clear='both'>"	
-      (0 .. max_number_of_colors).each do |color_code|
-        color_container = "<div style='background= ##{color_code.to_s(16)}'; border= '1px solid #000;'>&nbps;</div><div style='float= left'>#{color_code.to_s(16)}</div>"
+		def html
+			html = "<div style='width:600px;height:auto;float:left;clear:both'>"	
+			range = max_number_of_colors
+			range = 0 if max_number_of_colors == 1
+      (0 .. range).each do |color_code|
+        color_container = "<div style='background:##{color_code.to_s(16).rjust(6, '0')};width:60px;height:60px;border:1px solid #000;'>&nbsp;</div><div style='float:left'>#{color_code.to_s(16).rjust(6, '0')}</div>"
         html += color_container
       end
       html += "</div>"
+			to_html { html }
     end
 		
 		def generate(options={})
@@ -68,5 +71,23 @@ module ColorPicker
 					TEMPLATES[:skeleton].merge(options)
 				end
 			end 
+
+			def to_html
+				"<!DOCTYPE HTML>
+				
+				<html>
+				
+				<head>
+					<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+					<title>Palette Html</title>
+				</head>
+				
+				<body>
+					#{yield}
+				</body>
+				</html>
+				"
+			end
+			
   end
 end
