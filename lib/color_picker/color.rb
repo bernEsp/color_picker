@@ -23,5 +23,22 @@ module ColorPicker
     def rgb?
       code.respond_to?(:to_ary)
     end
+
+    def to_s
+      send("to_s_#{type}")
+    end
+
+    private
+      def type
+        rgb? ? :rgb : :hex
+      end
+
+      def to_s_hex
+        "##{self.to_hex}"
+      end
+
+      def to_s_rgb
+        "rgb(#{self.to_rgb.join(', ')})"
+      end
   end
 end

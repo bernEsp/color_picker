@@ -21,5 +21,20 @@ module ColorPicker
       assert_equal '000000', @hex_color.to_hex
       assert_equal '000000', @rgb_color.to_hex
     end
+
+    def test_to_s
+      assert_equal "rgb(0, 0, 0)", @rgb_color.to_s
+      assert_equal "#000000", @hex_color.to_s
+    end
+
+    def test_rgb?
+      assert_equal false, @hex_color.rgb?
+      assert_equal  true, @rgb_color.rgb?
+    end
+
+    def test_hex?
+      assert_equal true, @hex_color.hex?
+      assert_equal false, @hex_color.rgb?
+    end
   end
 end
