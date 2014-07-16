@@ -43,6 +43,9 @@
 	 * to_rgb (convert and hex code to rgb representation return an array) 
 	 * to_hex (convert and rgb code to hex code representation return an string)
 	 * to_s (print color like hexadecimal string or rgb with css style)
+### VERSION 0.1.1
+* fix initialize with options
+* change indentation tabs to spaces 
 
  
 
