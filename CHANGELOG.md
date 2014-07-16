@@ -46,6 +46,8 @@
 ### VERSION 0.1.1
 * fix initialize with options
 * change indentation tabs to spaces 
+### VERSION 0.1.2
+* depreacate default options in palette
 
  
 
