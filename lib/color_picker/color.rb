@@ -8,12 +8,12 @@ module ColorPicker
 
     def to_rgb
       return code if rgb?
-      code.scan(/.{2}/).map { |n| n.to_i(16) }
+      Color.new code.scan(/.{2}/).map { |n| n.to_i(16) }
     end
 
     def to_hex
       return code if hex?
-      code.map { |n| n.to_s(16) }.join.rjust(6, '0')
+      Color.new code.map { |n| n.to_s(16) }.join.rjust(6, '0')
     end
 
     def hex?

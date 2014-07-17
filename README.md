@@ -19,9 +19,9 @@ a tool to get a color based on color palette, also have a method to export to ht
  @palette.sample_color
  > #<ColorPicker::Color:0x007f4dc236ac10 @hex_code="000000">
 ```
-* generate a strong palette
+* generate a dark palette
 ```ruby
-  @palette.generate(template: :strong)
+  @palette.generate(template: :dark)
   > [0..7, 0..9, 0..255]
 ```
 
