@@ -50,6 +50,10 @@
 * depreacate default options in palette
 ### VERSION 0.1.3
 * add to s method
+### Version 0.1.4
+* refactor of palette and color class @alejandrogutierrez
+* refactor html method
+* rename strong to dark palette
 
  
 
