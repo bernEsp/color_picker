@@ -13,13 +13,18 @@ module ColorPicker
     end
 
     def test_to_rgb
-      assert_equal [0,0,0], @hex_color.to_rgb
+      assert_kind_of Color, @hex_color.to_rgb
       assert_equal [0,0,0], @rgb_color.to_rgb
     end
 
     def test_to_hex
-      assert_equal '000000', @hex_color.to_hex
-      assert_equal '000000', @rgb_color.to_hex
+      assert_equal "000000", @hex_color.to_hex
+      assert_kind_of Color, @rgb_color.to_hex
+    end
+
+    def test_method_chain
+      assert_equal "000000", @rgb_color.to_hex.code
+      assert_equal [0,0,0], @hex_color.to_rgb.code
     end
 
     def test_to_s
