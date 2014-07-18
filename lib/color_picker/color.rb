@@ -24,6 +24,10 @@ module ColorPicker
       code.respond_to?(:to_ary)
     end
 
+    def hsl?
+      code.respond_to?(:to_hash)
+    end
+
     def to_s
       send("to_s_#{type}")
     end
@@ -39,6 +43,10 @@ module ColorPicker
 
       def to_s_rgb
         "rgb(#{self.to_rgb.join(', ')})"
+      end
+
+      def to_s_hsl
+        "hsl(#{code[:h]}, #{code[:s]}%, #{code[:l]})"
       end
   end
 end

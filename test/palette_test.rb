@@ -5,6 +5,7 @@ module ColorPicker
     def setup
       @palette = ColorPicker::Palette.new
       @dark_palette = ColorPicker::Palette.new(template: :dark)
+      @dark_hsl = ColorPicker::Palette.new(template: :dark_hsl)
     end
 
     def test_default_palette
@@ -30,6 +31,11 @@ module ColorPicker
     def test_html
       @custom_palette = ColorPicker::Palette.new(colors: { red: 0..1, green: 1..2, blue: 5..14 })
       assert_equal "palette_default.html", @palette.html
+    end
+
+    def test_dark_hsl
+      assert_equal :dark_hsl, @dark_hsl.template
+      assert_equal ({ h: 0..360, s: 100..100, l: 50..50 }), @dark_hsl.colors
     end
   end
 end
